@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 字符串操作方法
+        // 1. concat('字符串1','字符串2',...)
+        var str = 'andy';
+        console.log(str.concat('red'));      // andyred
+        // 2. substr('截取的起始位置','截取几个字符串')
+        var str1 = '改革春风吹满地';
+        console.log(str1.substr(2,2));     // 春风
+
+        // 3. 替换字符 replace('被替换的字符','替换为的字符') 他只会替换符合条件的第一个字符
+        var str2 = 'andy';
+        console.log(str2.replace('a','b'));     // bndy
+        var str3 = 'andyandy';
+        console.log(str3.replace('a','b'));    // bndyandy
+        console.log(str3.replace(/a/g,'b'));  // bndybndy 正则表达式中的全局替换
+        
+        // 4. 字符串转化为数组 split('分隔符')   join('分隔符')将数字转化为字符串
+        str4 = "red, pink, 'blue";
+        console.log(str4.split(','));
+        str5 = "red&pink&blue";
+        console.log(str5.split('&'));
+    </script>
+</body>
+</html>

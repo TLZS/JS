@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        textarea {
+            resize: none;
+        }
+
+        ul {
+            width: 200px;
+        }
+
+        li a {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <button>发布</button>
+    <ul>
+    </ul>
+    <script>
+        var btn = document.querySelector('button');
+        var textarea = document.querySelector('textarea');
+        var ul = document.querySelector('ul');
+        btn.onclick = function () {
+            if (textarea.value == '') {
+                alert('您输入的内容为空，请输入内容')
+            } else {
+                var li = document.createElement('li');
+                // 在内容后面同时加一个删除链接，为了页面不跳转 href 指向 javascirpt
+                li.innerHTML = textarea.value + "<a href='javascript:;'>删除</a>";
+                ul.insertBefore(li, ul.children[0]);  // 新发布的放在前面 
+
+                var as = document.querySelectorAll('a');
+                for (var i = 0; i < as.length; i++) {
+                    as[i].onclick = function () {
+                        ul.removeChild(this.parentNode);  // this指点击那个 a
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

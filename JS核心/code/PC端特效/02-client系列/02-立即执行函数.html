@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 立即执行函数 不需要调用 能够自己执行的函数
+        
+        // 2. 写法有两种
+        //    (function() {})()     (function(){}())
+        (function() {
+            console.log(2);       // 无需调用，直接输出 2
+        })();         // 第二个小括号可以看作是调用函数 类似 fn()这里的小括号
+
+        // 3. 多个立即执行函数需要用分号隔开
+
+        // 4. 也可以传递参数
+        (function(a,b) {          // a b 为形参
+           console.log(a + b);   // 输出 3
+           var num = 20;    // 局部变量   
+        })(1,2);                 // 传递的两个实参 1 2
+
+        // 5. 4的另一种形式写法
+        (function(a,b){
+            console.log(a + b);  // 输出 5
+            var num = 10;   // 局部变量
+        }(2,3))
+
+        // 6. 立即执行函数最大的作用就是：独立创建一个作用域，里面的变量都是局部变量，不会出现命名冲突的问题
+    </script>
+</body>
+</html>

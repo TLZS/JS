@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 案例一
+        var num = 10;
+        fun();
+
+        function fun() {
+            console.log(num);   // undefine 
+            var num = 20;
+        }
+
+        /*
+        // 案例一相当于执行了以下代码
+        var num;
+
+        function fun () {
+            var num;
+            console.log(num);  // 根据作用域链就近原则 输出应该是 undefined
+            num = 20;
+        }
+        num = 10;
+        fun()
+        */
+
+        // 案例二
+        var num = 10;
+        fun();
+
+        function fun() {
+            console.log(num);
+            var num = 20;
+            console.log(num)
+        }
+
+        /*
+        // 案例二相当于执行了以下代码
+        var num;
+
+        function fun () {
+            var num;
+            console.log(num);  // 根据作用域链就近原则 输出应该是 undefined
+            num = 20;
+            console.log(num);
+        }
+        num = 10;
+        fun()
+        */
+    </script>
+</body>
+
+</html>

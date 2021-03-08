@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 要求封装一个函数 返回当前时分秒 格式为 08：08：08
+
+        function getTime() {
+            var date = new Date();
+            var h = date.getHours()      // 获取当前的小时数
+            h = h > 10 ? h : '0' + h;   // 如果是5点，则表示为 05
+            var m = date.getMinutes();  // 获取当前分钟
+            m = m > 10 ? m : '0' + m ;
+            var s = date.getSeconds();  // 获取当前秒数
+            s = s > 10 ? s : '0' + s;
+            return h + ':' + m + ':' + s
+        }
+        console.log(getTime());
+    </script>
+</body>
+</html>

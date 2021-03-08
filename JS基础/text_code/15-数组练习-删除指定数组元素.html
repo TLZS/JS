@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var arr = [2, 0, 6, 1, 77, 0, 52, 0, 25, 7];
+        // var newArry = [];
+        // var j = 0;
+        // for (var i = 0; i < arr.length; i++) {
+        //     if (arr[i] !== 0) {
+        //        newArry[j++] = arr[i]
+        //     }
+        // }
+        // console.log(newArry)
+        var arr = [2, 0, 6, 1, 77, 0, 52, 0, 25, 7];
+        var newArr = [];   // 空数组的默认的长度为 0 
+        // 定义一个变量 i 用来计算新数组的索引号
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] != 0) {
+                // 给新数组
+                // 每次存入一个值，newArr长度都会 +1  
+                newArr[newArr.length] = arr[i];
+            }
+        }
+        console.log(newArr);
+
+    </script>
+</body>
+
+</html>

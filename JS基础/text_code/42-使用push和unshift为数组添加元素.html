@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // push() 给数组末尾添加元素
+        var arr = [1,2,3];
+        // arr.push('pink','haha');
+        // console.log(arr)   [1,2,3,'pink','haha']
+        console.log(arr.push('pink','haha'))   // 5
+        // 1. push 可以给数组添加新的元素
+        // 2. push() 参数直接写 数组元素就可以了，追加的元素在末尾
+        // 3. push 完毕之后 返回的结果是 新数组的长度
+        // 4. 原数组也会发生变化
+
+        // unshift 在数组前追加元素
+        // unshift() 参数直接写 数组元素就可以了
+        // unshift完毕之后，返回的结果是 新数组的长度
+        // 原数组也会发生变化
+        var arr2 = [1,2,3];
+        //arr2.unshift('red','blue');
+        //console.log(arr2);         // 在数组前追加元素  ['red','blue',1,2,3]
+        console.log(arr2.unshift('red','blue'))   // 5
+
+    </script>
+</body>
+</html>

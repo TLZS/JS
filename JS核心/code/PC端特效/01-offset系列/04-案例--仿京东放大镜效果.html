@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .preview_img {
+            position: relative;
+            height: 300px;
+            width: 300px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        .mask {
+            display:none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: #fede4f;
+            /* opacity能设置透明度级别 */
+            opacity: .5;   
+            border: 1px solid #ccc;
+            cursor: move;
+        }
+
+        .big {
+            display: none;
+            position: absolute;
+            left: 410px;
+            top: 0;
+            width: 500px;
+            height: 500px;
+            background-color: red;
+        }
+
+        .big img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 400px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="preview_img">
+        <img src="iphone.jpg" alt="">
+        <!-- 遮挡层 -->
+        <div class="mask"></div>
+        <!-- 放大版的图片 -->
+        <div class="big">
+            <img src="iphone.jpg" alt="" class="bigImg">
+        </div>
+    </div>
+    <script>
+        var preview_img = document.querySelector('.preview_img');
+        var mask = document.querySelector('.mask');
+        var big = document.querySelector('.big');
+        // 1. 当鼠标经过图片时，就显示 遮罩层mask 和大盒子big
+        preview_img.addEventListener('mouseover', function() {  // 如果只给 img 添加事件会一直闪
+            mask.style.display = 'block';             // mouseover 鼠标经过
+            big.style.display = 'block';
+        })
+        preview_img.addEventListener('mouseout', function() {
+            mask.style.display = 'none';         // mouseout 鼠标离开
+            big.style.display = 'none';
+        })
+        // 2. 鼠标移动的时候让遮罩层跟着鼠标移动
+        preview_img.addEventListener('mousemove',function(e) {
+            // (1) 先计算鼠标在盒子内的坐标
+            var x = e.pageX - this.offsetLeft;
+            var y = e.pageY - this.offsetTop;
+            // (2) 鼠标默认在遮罩层的左上角，为了让鼠标在遮罩层的中央 故让遮罩层往上和左走高度的一般 ，因此减去 50
+            // (3) 由于遮罩层只能在 preview_img 中移动，所以它移动的距离是有限制的
+            var maskX = x - mask.offsetWidth/2;
+            var maskY = y - mask.offsetHeight/2;
+            if (maskX <= 0) {
+                maskX = 0;
+            } else if (maskX >= preview_img.offsetWidth - mask.offsetWidth) {
+                maskX = preview_img.offsetWidth - mask.offsetWidth;
+            }
+            if (maskY <= 0) {
+                maskY = 0;
+            } else if (maskY >= preview_img.offsetHeight - mask.offsetHeight) {
+                maskY = preview_img.offsetHeight - mask.offsetHeight;
+            }
+            mask.style.left = maskX + 'px';    
+            mask.style.top = maskY + 'px';     
+            // 遮挡层最大移动距离 （因为这里设置的长宽相等，因此只求一个就可以了）
+            var maskMax = preview_img.offsetWidth - mask.offsetWidth;
+            var bigImg = document.querySelector('.bigImg');
+            var bigMax = bigImg.offsetWidth - big.offsetWidth  // 大图最大移动距离
+            // 3. 大图片移动距离 = 遮挡层移动距离 * 大图片最大移动距离 / 遮挡层最大移动距离
+            var bigX = maskX * bigMax / maskMax;
+            var bigY = maskY * bigMax / maskMax;
+            bigImg.style.left = bigX + 'px';     // 这里和视频中不一样 为啥这里 在 bigX/Y 前面没加负号
+            bigImg.style.top = bigY + 'px';     // 也是向相反方向移动, 可能是因为这里的 bigMax 是负值
+        })
+    </script>
+</body>
+</html>

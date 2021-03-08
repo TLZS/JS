@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="ldh">刘德华</button>
+    <button id="zxy">张学友</button>
+    <img src="image/ldh.jpg" alt="">
+
+    <script>
+        // 修改元素属性 src title 其余的 href等属性类似
+        // 1. 获取元素
+        var ldh = document.getElementById('ldh');
+        var zxy = document.getElementById('zxy');
+        var img = document.getElementsByTagName('img');
+        // 2. 注册事件 处理程序
+        zxy.onclick = function() {
+            img.src = 'image/zxy.jpg';
+            img.title = '张学友';
+        }
+        ldh.onclick = function() {
+            img.src = 'image/ldh.jpg';
+            img.title = '刘德华';
+        }
+    </script>
+</body>
+</html>

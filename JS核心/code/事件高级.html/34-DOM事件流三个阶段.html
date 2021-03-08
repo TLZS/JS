@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="father">
+        <div class="son">son盒子</div>
+    </div>
+    <script>
+        // 1. js 代码中只能执行捕获或冒泡其中一个阶段
+        // 2. onclick 和 attachEvent(ie) 只能得到冒泡阶段
+        // 3. 捕获阶段 如果 addEventListener 第三个参数是 true 那么则处于捕获阶段
+        var son = document.querySelector('.son');
+        var father = document.querySelector('.father');
+        // son.addEventListener('click', function() {
+        //     alert('son');
+        // },true)
+        // father.addEventListener('click', function() {
+        //     alert('father');
+        // },true)
+        // 上面两个点击事件因为 addEventListener第三个参数设置为true 
+        // 因此处于捕获阶段，故先弹出 father 再弹出 son
+
+        son.addEventListener('click', function() {
+            alert('son');
+        })
+        father.addEventListener('click', function() {
+            alert('father');
+        })
+        // 上面两个点击事件因为 addEventListener第三个参数设置为false,或不设置
+        // 因此处于冒泡阶段，故先弹出 son 再弹出 father
+    </script>
+</body>
+</html>

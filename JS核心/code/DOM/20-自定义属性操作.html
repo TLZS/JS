@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- id class等为内置属性 index这种为程序员的自定义属性 -->
+    <div id="demo" index='1'></div>   
+    <script>
+        var div = document.querySelector('div');
+        // 1. 获取元素属性值 element.属性  和 element.getAttribute()都可获得属性值
+        console.log(div.id);     // demo
+        console.log(div.getAttribute('id')); // demo
+
+        // element.属性只能获得内置属性，不能获得自定义属性 element.getAttribute都可以
+        console.log(div.index);                   // undefine
+        console.log(div.getAttribute('index'));  // 1
+
+        // 2. 设置属性值
+        //   (1) element.属性 = '值'
+        div.id = 'test';
+        div.className = 'nav';          // class 变为 nav
+        console.log(div.id);       // test
+        //   (2) element.setAttribute('属性','值')  // 主要针对自定义属性
+        div.setAttribute('index',2);
+        // div.setAttribute('class','footer') // class变为footer class特殊这里写为class不是className
+
+        // 3. 移除属性
+        div.removeAttribute('index')
+    </script>
+</body>
+</html>

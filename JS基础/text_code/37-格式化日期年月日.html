@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 格式化日期 年月日
+        var date = new Date()
+        console.log(date.getFullYear());     // 返回当前日期的年
+        console.log(date.getMonth());       // 返回当前日期的月份的前一个月 月份为0-11
+        console.log(date.getDate());       // 返回当前是几号
+        console.log(date.getDay());       // 返回当前是星期几 0-6 星期天-星期六
+
+        // 写一个 2021年2月17日 星期三
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var dates = date.getDate();
+        var day = date.getDay();
+        var arr = ['星期天','星期一','星期二','星期三','星期四','星期五','星期六'];
+        console.log('今天是：' + year + '年' + month + '月' + dates + '月' + arr[day]);
+    </script>
+</body>
+</html>

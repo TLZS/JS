@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            position: absolute;
+            top: 100px;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <span></span>
+    <button class="btn500">移动到500</button>
+    <button class="btn800">移动到800</button>
+    <script>
+        var span = document.querySelector('span');
+        var btn500 = document.querySelector('.btn500');
+        var btn800 = document.querySelector('.btn800');
+        function animate(obj, target, callback) {       // 多加一个形参(回调函数)
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                step = (target - obj.offsetLeft) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                if (obj.offsetLeft == target) {
+                    clearInterval(obj.timer);
+                    // 回调函数写在定时器结束里面
+                    if (callback) {
+                        callback()
+                    }
+                }
+                obj.style.left = obj.offsetLeft + step + 'px';
+            }, 15)     // 一般写 15
+        }
+        btn500.addEventListener('click', function () {
+            animate(span, 500);    
+        })
+        btn800.addEventListener('click', function () {
+            animate(span, 800, function() {
+                 span.style.backgroundColor = 'red';
+            });    
+        })
+
+    </script>
+</body>
+
+</html>

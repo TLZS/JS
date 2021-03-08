@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="father">
+        <div class="son">son</div>
+    </div>
+    <script>
+        var father = document.querySelector('.father');
+        var son = document.querySelector('.son');
+        son.addEventListener('click',function(e) {
+            alert('son');     
+            // 点击 son 后后面的不会再弹出   
+            e.stopPropagation();      // stop 停止 Propagation 传播
+            // e.cancelBubble = true;   // 非标准，cancel取消 bubble 泡泡
+        })
+        father.addEventListener('click',function() {
+            alert('father');
+        })
+        document.addEventListener('click',function() {
+            alert('document');
+        })
+    </script>
+</body>
+</html>

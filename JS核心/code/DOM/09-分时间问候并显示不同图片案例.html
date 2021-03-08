@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  
+</head>
+<body>
+    <img src="image/s.gif" alt="不同时候的显示图片">
+    <div>上午好</div>
+    <script>
+        var img = document.querySelector('img');
+        var div = document.querySelector('div');
+        var date = new Date();
+        var h = date.getHours();
+        if (h < 12) {
+           img.src = 'image/s.gif';
+           div.innerHTML = '上午好';
+        } else if (h < 18) {
+            img.src = 'image/x.gif';
+            div.innerHTML = '下午好';
+ 
+        } else {
+            img.src = 'image/w.gif';
+            div.innerHTML = '晚上好';
+        }
+    </script>
+</body>
+</html>

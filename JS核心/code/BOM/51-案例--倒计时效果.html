@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            width: 100px;
+            height: 100px;
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span class="hour">1</span>
+        <span class="minute">2</span>
+        <span class="second">3</span>
+    </div>
+    <script>
+        var hour = document.querySelector('.hour');
+        var minute = document.querySelector('.minute');
+        var second = document.querySelector('.second');
+        var inputTime = + new Date('2021-3-2 12:00:00');
+        countDown();  // 注意，这里需要先调用一次这个函数，防止第一次刷新页面有空白 
+        // 开启定时器
+        setInterval(countDown,1000);  // 每隔1s调用一次
+        function countDown(time) {
+            var nowTime = + new Date();
+            var times = (inputTime - nowTime) / 1000;
+            // var d = (times / 60 / 60 / 24);
+            var h = parseInt(times / 60 / 60 % 24);
+            h = h > 10 ? h : '0' + h;
+            hour.innerHTML = h;           // 把小时数当作第一个盒子内容
+            var m = parseInt(times / 60 % 60);
+            m = m > 10 ? m : '0' + m;
+            minute.innerHTML = m;        // 把分钟数当作第一个盒子内容
+            var s = parseInt(times % 60);
+            s = s > 10 ? s : '0' + s;
+            second.innerHTML = s;       // 把秒数当作第一个盒子内容
+        }
+    </script>
+</body>
+
+</html>

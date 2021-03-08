@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. instanceof 运算符 它可以用来检测是否为数组
+        var arr = [];
+        var obj = {};
+        console.log(arr instanceof Array);     // true
+        console.log(obj instanceof Array);    // false
+        console.log(obj instanceof Object);  // true
+
+        // 2. Array.isArray(参数)  H5新增的方法   ie99以上版本才支持
+        console.log(Array.isArray(arr));   // true
+        console.log(Array.isArray(obj));  // false
+    </script>
+</body>
+</html>

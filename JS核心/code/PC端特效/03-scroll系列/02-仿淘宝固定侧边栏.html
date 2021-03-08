@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .slider-bar {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: 600px;
+            width: 45px;
+            height: 130px;
+            background-color: pink;
+        }
+
+        .w {
+            width: 1200px;
+            margin: 10px auto;
+        }
+        .header {
+            height: 150px;
+            background-color: purple;
+        }
+
+        .banner {
+            height: 250px;
+            background-color: skyblue;
+        }
+
+        .main {
+            height: 1000px;
+            background-color: yellowgreen;
+        }
+
+        span {
+            display: none;
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider-bar">
+        <span class="goBack">返回顶部</span>
+    </div>
+    <div class="header w">头部区域</div>
+    <div class="banner w">banner区域</div>
+    <div class='main w'>主体部分</div>
+    <script>
+        // 1. 获取元素
+        var sliderbar = document.querySelector('.slider-bar');
+        var banner = document.querySelector('.banner');
+        var main = document.querySelector('.main');
+        var span =document.querySelector('span');
+        // banner.offsetTop 就是页面被卷去头部的大小,一定要写在滚动的外面
+        var bannerTop = banner.offsetTop;
+        // 侧边栏固定定位后的 top 值
+        var slidebarTop = sliderbar.offsetTop - bannerTop;
+        console.log(sliderbar.offsetTop);
+        // 2. 页面滚动事件 scroll
+        document.addEventListener('scroll', function() {
+            // 3. 当页面被卷去的头部大于等于 bannerTop 时，侧边栏就要改为固定定位
+            if (window.pageYOffset >= bannerTop) {
+                sliderbar.style.position = 'fixed';
+                sliderbar.style.top = slidebarTop + 'px';
+            } else {
+                sliderbar.style.position = 'absolute';
+                sliderbar.style.top = '300px';
+            }
+            if (window.pageYOffset >= main.offsetTop) {
+                span.style.display = 'block';
+            } else {
+                span.style.display = 'none';
+            }
+        }) 
+    </script>
+</body>
+</html>

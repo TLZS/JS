@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="begin">开启定时器</button>
+    <button class="stop">停止定时器</button>
+    <script>
+        var begin = document.querySelector('.begin');
+        var stop = document.querySelector('.stop');
+        var timer = null;   // 设置 timer 为全局变量 等于一个空对象
+        begin.addEventListener('click', function () {
+            timer = setInterval(function () {     // 赋值给 timer
+                console.log('每过1s打印一次');
+            }, 1000)
+        })
+        stop.addEventListener('click', function () {
+            clearInterval(timer);     // 如果不设置全局变量这里是会出错的
+        })
+    </script>
+</body>
+
+</html>

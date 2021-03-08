@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <script>
+        var search = document.querySelector('input');
+        document.addEventListener('keyup', function(e) {
+            //console.log(e.keyCode);    // 不知道 s 的 ASCII 码，可以先打印出来看看
+            if (e.keyCode === 83) {
+                search.focus();      // focus() 获得焦点
+            }
+        })
+    </script>
+</body>
+</html>

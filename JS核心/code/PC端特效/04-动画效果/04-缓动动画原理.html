@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            position: absolute;
+            top: 100px;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <span></span>
+    <button class="btn500">移动到500</button>
+    <button class="btn800">移动到800</button>
+    <script>
+        var span = document.querySelector('span');
+        var btn500 = document.querySelector('.btn500');
+        var btn800 = document.querySelector('.btn800');
+        function animate(obj, target) {
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                // 步长计算公式 (目标值 - 现在位置) / 10
+                // 因为每次的位置不一样，因此要写在定时器里面
+                // 把步长值改为整数(注意正负数的取值方式不同) 不要出现小数问题
+                step = (target - obj.offsetLeft) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                if (obj.offsetLeft == target) {
+                    clearInterval(obj.timer);
+                }
+                obj.style.left = obj.offsetLeft + step + 'px';
+            }, 15)     // 一般写 15
+        }
+        btn500.addEventListener('click', function () {
+            animate(span, 500);    
+        })
+        btn800.addEventListener('click', function () {
+            animate(span, 800);    
+        })
+        // 匀速动画 就是 盒子当前的位置 + 固定的步长
+        // 缓速动画 就是 盒子当前的位置 + 变化的步长(目标值 - 现在位置) / 10
+    </script>
+</body>
+
+</html>

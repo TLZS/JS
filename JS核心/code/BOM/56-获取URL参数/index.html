@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // console.log(location.search);    // ?uname=andy
+        // 1. 首先去掉 ?  substr('起始位置',截取几个字符);
+        var params = location.search.substr(1)
+        console.log(params);            // uname=andy
+        // 2. 利用 = 把字符串分割为数组 split('='),把数组连接为字符串用 join()
+        var arr = params.split('=');
+        console.log(arr);         // ["uname", "andy"]
+    </script>
+</body>
+</html>

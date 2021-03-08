@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // indexOf 从前开始查找返回数组中元素第一个符合条件的元素的索引号，若没有此元素则返回 -1
+        var arr = ['red','blue','pink','purple','blue'];
+        console.log(arr.indexOf('blue'));     // 1
+        console.log(arr.indexOf('black'));   // -1
+
+        // lastIndexOf() 从后往前数返回数组中元素第一个符合条件的元素的索引号，若没有此元素则返回 -1
+        console.log(arr.lastIndexOf('blue'));   // 4
+        console.log(arr.lastIndexOf('black'));  // -1
+    </script>
+</body>
+</html>
